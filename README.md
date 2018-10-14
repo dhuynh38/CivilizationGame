@@ -8,3 +8,8 @@ javac -cp src/main/java src/main/java/runner/*.java src/main/java/model/*.java s
 To run the game, execute the command in the command line:
 java -cp src/main/java runner.CivilizationGame
 
+Loading Screen:
+![alt text](https://github.com/dhuynh38/CivilizationGame/blob/master/mainscreen.png)
+
+Gameplay Screen:
+![alt text](https://github.com/dhuynh38/CivilizationGame/blob/master/gameplay.png)
