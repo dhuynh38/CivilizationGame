@@ -1,0 +1,71 @@
+package view;
+
+import controller.GameController;
+import javafx.scene.layout.BorderPane;
+/**
+ * This class represents the GameScreen class
+ */
+public class GameScreen extends BorderPane {
+    private static ResourcesMenu resMenu;
+    private GridFX grid;
+    private static AbstractMenu actMenu = new AbstractMenu();
+    /**
+     * Creates a new view into the game. this layout should include
+     * the rescource bar, grid map, and action menus
+     *
+     */
+    public GameScreen() {
+        //TODO
+        grid = GridFX.getInstance();
+        resMenu = new ResourcesMenu();
+
+        setCenter(grid);
+        setTop(resMenu.getRootNode());
+        setLeft(actMenu.getRootNode());
+    }
+
+    /**
+     * This method should update the gridfx and the resouce bar
+     */
+    public void update() {
+      //TODO
+        resMenu.update();
+        grid.update();
+    }
+    /**
+    * this method should return the resource menu
+    * @return reosuce menu
+    */
+    public static ResourcesMenu getResources() {
+      //TODO
+      return resMenu;
+    }
+
+
+    /**
+     * This method switches menus based on passed in game state.
+     * Game.java calls this to selectively control which menus are displayed
+     * @param state
+     */
+    public static void switchMenu(GameController.GameState state) {
+       //TODO
+        if (state == GameController.GameState.NEUTRAL) {
+            actMenu = new StatusMenu();
+            System.out.println("A");
+        } else if (state == GameController.GameState.WORKER) {
+            actMenu = new WorkerMenu();
+            System.out.println("B");
+        } else if (state == GameController.GameState.RECRUITING) {
+            actMenu = new RecruitMenu();
+            System.out.println("C");
+        } else if (state == GameController.GameState.BUILDING) {
+            actMenu = new BuildingMenu();
+            System.out.println("D");
+        } else if (state == GameController.GameState.MILITARY) {
+            actMenu = new MilitaryMenu();
+            System.out.println("E");
+        }
+
+
+    }
+}

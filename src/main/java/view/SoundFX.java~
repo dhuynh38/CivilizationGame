@@ -1,0 +1,32 @@
+package view;
+
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import javafx.util.Duration;
+import java.io.File;
+
+public class SoundFX {
+    private String soundName;
+    private static MediaPlayer mediaPlayer;
+    private Media sound;
+
+    public SoundFX(String noise) {
+        this.soundName = noise;
+        sound = new Media(new File(soundName).toURI().toString());
+        mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.play();
+    }
+
+    public void playSound() {
+        mediaPlayer.play();
+    }
+
+    public void setVolume(double volume) {
+        mediaPlayer.setVolume(volume);
+    }
+
+    public void setTime(double sec) {
+        mediaPlayer.setStopTime(new Duration(sec));
+    }
+
+}

@@ -1,0 +1,81 @@
+package view;
+
+//import model.Civilization;
+
+import javafx.collections.ObservableList;
+import javafx.collections.FXCollections;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
+import javafx.scene.control.SelectionMode;
+import javafx.scene.image.ImageView;
+import javafx.scene.image.Image;
+import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+
+/**
+ * Created by Tian-Yo Yang on 11/11/2016.
+ * This class represents the Start Screen for the Civ applicatios. This is the
+ * layout that should be displayed upon running the Civ application.
+ *
+ * This class should have and display
+ * 1. a background
+ * 2. a list of Civilizations
+ * 3. a Start button
+ */
+public class StartScreen extends StackPane {
+    private ListView<CivEnum> list;
+    private Button start;
+
+    /**
+    * constuctor of the start screen. Should set the background
+    * image and display a list of civilizations and a start button
+    */
+    public StartScreen() {
+        //TODO
+        ImageView background = new
+            ImageView(new
+                      Image("File:./src/main/java/view/civ_background.png"));
+        Label label = new Label("Select a Civilization to Begin");
+        label.setFont(new Font("Cambria", 35));
+        label.setTextFill(Color.RED);
+        label.setTranslateY(220);
+        start = new Button("START");
+        start.setPrefWidth(100);
+        start.setPrefHeight(50);
+        start.setTranslateY(375);
+        list = new ListView<CivEnum>();
+        ObservableList<CivEnum> civs = FXCollections
+            .observableArrayList(CivEnum.ANCIENT_EGYPT,
+                                CivEnum.QIN_DYNASTY,
+                                CivEnum.ROMAN_EMPIRE);
+        list.setItems(civs);
+        list.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+        list.setMaxSize(500, 100);
+        list.setTranslateY(290);
+
+        getChildren().add(background);
+        getChildren().add(label);
+        getChildren().add(getCivList());
+        getChildren().add(getStartButton());
+
+    }
+    /**
+    * gets the start button
+    * @return the start button
+    */
+    public Button getStartButton() {
+        //TODO
+        return start;
+    }
+    /**
+    * return a ListView of CivEnums representing the list of
+    * available civilizations to choose from
+    * @return listview of CivEnum
+    */
+    public ListView<CivEnum> getCivList() {
+        //TODO
+        return list;
+    }
+}

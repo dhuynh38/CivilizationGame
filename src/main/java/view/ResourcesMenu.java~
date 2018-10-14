@@ -1,0 +1,65 @@
+package view;
+
+import controller.GameController;
+import javafx.scene.layout.HBox;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
+import model.Civilization;
+
+
+public class ResourcesMenu {
+    private int strategy;
+    private int resources;
+    private int settlements;
+    private int money;
+    private int food;
+    private int happiness;
+    private HBox bar;
+
+    /**
+    * creates a resource bar and display the current state of
+    * your civilization's resouces
+    */
+    public ResourcesMenu() {
+        //TODO
+        bar = new HBox(10);
+        Text one = new Text("Strat Level: " + strategy);
+        Text two = new Text("Resources: " + resources);
+        Text three = new Text("Settlements: " + settlements);
+        Text four = new Text("Money: " + money);
+        Text five = new Text("Food: " + food);
+        Text six = new Text("Happiness: " + happiness);
+        one.setFont(new Font("Cambria", 20));
+        two.setFont(new Font("Cambria", 20));
+        three.setFont(new Font("Cambria", 20));
+        four.setFont(new Font("Cambria", 20));
+        five.setFont(new Font("Cambria", 20));
+        six.setFont(new Font("Cambria", 20));
+        bar.getChildren().addAll(one, two, three, four, five, six);
+
+    }
+    /**
+    * should update all the resouce values to the current
+    * state of your resource values
+    */
+    public void update() {
+        //TODO
+        if (GameController.getCivilization() != null) {
+            strategy = GameController.getCivilization().getStrategy().getStrategyLevel();
+            resources = GameController.getCivilization().getResources();
+            settlements = GameController.getCivilization().getNumSettlements();
+            money = GameController.getCivilization().getTreasury().getCoins();
+            food = GameController.getCivilization().getFood();
+            happiness = GameController.getCivilization().getHappiness();
+        }
+    }
+    /**
+    * updates the resource bar and returns the resource bar
+    * @return a hbox representation of the resource bar
+    */
+    public HBox getRootNode() {
+        //TODO
+        update();
+        return bar;
+    }
+}
